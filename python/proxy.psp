@@ -1,6 +1,8 @@
 <%
 import cgi
 from twill.commands import *
+from BeautifulSoup import BeautifulSoup
+import urllib2
 
 agent('Mozilla/5.0 (X11; Linux i686; rv:11.0) Gecko/20100101 Firefox/11.0')
 # Mentionining the form variable instantiates a FieldStorage object
@@ -16,6 +18,7 @@ else:
    fv("2", "FullTextCriteria", isbn)
    submit()
    data = show()
+   soup = Bea
 %>
 
 <%= isbn %>

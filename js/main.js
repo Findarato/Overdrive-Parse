@@ -4,7 +4,7 @@
 
 
 function getStatus(isbn){
-	$.get("http://labs.lapcat.org/overdrive/python/test.psp",{"isbn":isbn},function(data){
+	$.get("http://labs.lapcat.org/overdrive/python/proxy.psp",{"isbn":isbn},function(data){
 		document.write(data)
 		//alert("test")
 	})
