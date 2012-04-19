@@ -3,7 +3,7 @@ This script will parse the overdrive site to get you status on any book you have
 
 ## Quick start
 
-
+* This script requires the twill and BeautifulSoup libraries
 
 
 ## Features

@@ -2,7 +2,6 @@
 import cgi
 from twill.commands import *
 from BeautifulSoup import BeautifulSoup
-import urllib2
 
 agent('Mozilla/5.0 (X11; Linux i686; rv:11.0) Gecko/20100101 Firefox/11.0')
 # Mentionining the form variable instantiates a FieldStorage object
@@ -17,9 +16,21 @@ else:
    go("http://incolsa.lib.overdrive.com/")
    fv("2", "FullTextCriteria", isbn)
    submit()
-   data = show()
-   soup = Bea
+   #data = show()
+   soup = BeautifulSoup(show())
+  #noscriptSoup = soup.find('b').findNext('noscript')
+   data1 = soup.find(text='Available copies:')
+   data1 = data1.findNext('noscript')
+   
+   data2 = soup.find(text='Library copies:')
+   data2 = data2.findNext('noscript')
+
+
+
+   
 %>
 
-<%= isbn %>
-<%= data %>
+<%= #isbn
+ %>
+Available Copies:<%= data1.contents[0] %>
+Library Copies:<%= data2.contents[0]  %>
