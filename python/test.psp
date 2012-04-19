@@ -1,0 +1,22 @@
+<%
+import cgi
+from twill.commands import *
+
+agent('Mozilla/5.0 (X11; Linux i686; rv:11.0) Gecko/20100101 Firefox/11.0')
+# Mentionining the form variable instantiates a FieldStorage object
+# The getfirst() method is tailored to get uniquely named fields
+isbn = form.getfirst('isbn')
+
+if not isbn:
+	isbn = ""
+else:
+   # Escape the user input to avoid script injection attacks
+   isbn = cgi.escape(isbn)
+   go("http://incolsa.lib.overdrive.com/")
+   fv("2", "FullTextCriteria", isbn)
+   submit()
+   data = show()
+%>
+
+<%= isbn %>
+<%= data %>
