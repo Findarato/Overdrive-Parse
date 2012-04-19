@@ -21,16 +21,18 @@ else:
   #noscriptSoup = soup.find('b').findNext('noscript')
    data1 = soup.find(text='Available copies:')
    data1 = data1.findNext('noscript')
+   data1 = data1.contents[0]
+   data1 = data1.replace(' ','')
    
    data2 = soup.find(text='Library copies:')
    data2 = data2.findNext('noscript')
-
+   data2 = data2.contents[0]
+   data2 = data2.replace(' ','')
 
 
    
 %>
 
-<%= #isbn
- %>
-Available Copies:<%= data1.contents[0] %>
-Library Copies:<%= data2.contents[0]  %>
+
+
+{"isbn":<%=isbn%>,"available":<%=data1%>,"library":<%= data2%>}

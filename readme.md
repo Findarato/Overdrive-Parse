@@ -14,7 +14,7 @@ This script will parse the overdrive site to get you status on any book you have
 
 ## Project information
 
-* Source: http://github.com/h5bp/html5-boilerplate
+* Source: http://github.com/Findarato/overdrive
 * Web: http://labs.lapcat.org/overdrive
 * Docs: http://html5boilerplate.com/docs
 * Twitter: http://twitter.com/Findarato88
