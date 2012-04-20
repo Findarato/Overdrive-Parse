@@ -13,6 +13,6 @@ function getStatus(isbn){
 $(document).ready(function() {
 
 	getStatus("9781101552292");
-	//getStatus("0792766199");
+	getStatus("0792766199");
 	
 });
