@@ -5,8 +5,7 @@
 
 function getStatus(isbn){
 	$.getJSON("http://labs.lapcat.org/overdrive/python/proxy.psp",{"isbn":isbn},function(data){
-		//document.write(data)
-		alert(JSON.stringify(data))
+		document.write(JSON.stringify(data))
 	})
 }
 
@@ -14,4 +13,6 @@ function getStatus(isbn){
 $(document).ready(function() {
 
 	getStatus("9781101552292");
+	//getStatus("0792766199");
+	
 });
