@@ -4,15 +4,16 @@
 
 
 function getStatus(isbn){
-	$.getJSON("http://labs.lapcat.org/overdrive/python/proxy.psp",{"isbn":isbn},function(data){
-		document.write(JSON.stringify(data))
+	$.getJSON("http://labs.lapcat.org/overdrive/proxy.php",{"isbn":isbn},function(data){
+		$("body").append(JSON.stringify(data))
 	})
 }
 
 
 $(document).ready(function() {
 
-	getStatus("9781101552292");
-	getStatus("0792766199");
-	
+	//getStatus("9781781102534");
+
+   //getStatus("http://incolsa.lib.overdrive.com/ContentDetails.htm?ID=A747D620-96F9-42BC-B4E1-4830EC9D3C9E");
+   getStatus();
 });
