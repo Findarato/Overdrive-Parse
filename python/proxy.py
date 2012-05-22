@@ -1,25 +1,26 @@
-<%
 import cgi
 from twill.commands import *
 from BeautifulSoup import BeautifulSoup
+import simplejson as json
 data1 = "No results found"
 data2 = "No results found"
 agent('Mozilla/5.0 (X11; Linux i686; rv:11.0) Gecko/20100101 Firefox/11.0')
-isbn = form.getfirst('isbn')
-
+isbn = 'http://incolsa.lib.overdrive.com/ContentDetails.htm?ID=A747D620-96F9-42BC-B4E1-4830EC9D3C9E'
+isbn = "9781781102534"
+b = get_browser()
 if not isbn:
 	isbn = ""
 else:
 	if len(isbn) > 13: #this should be a direct link to the content 
 		isbn = cgi.escape(isbn)
-		go(isbn)
-		soup = BeautifulSoup(show())
+		b.go(isbn)
+		soup = BeautifulSoup(b.get_html())
 	else: # a normal ISBN link
 		isbn = cgi.escape(isbn)   # Escape the user input to avoid script injection attacks
-		go("http://incolsa.lib.overdrive.com/")
-		fv("2", "FullTextCriteria", isbn)
+		b.go("http://incolsa.lib.overdrive.com/")
+		formvalue("2", "FullTextCriteria", isbn)
 		submit()
-		soup = BeautifulSoup(show())
+		soup = BeautifulSoup(b.get_html())
 		
 	if soup.find(text='no results were found'):#Get the Copies that are accessable
 		data1 = "No results found"
@@ -36,8 +37,6 @@ else:
 			data2 = data2.contents[0]
 			data2 = data2.replace(' ','')
 
-
-
-		
-%>
-{"isbn":<%= isbn%>,"available":<%= data1%>,"library":<%= data2%>}
+#print data1
+#print data2
+print json.dumps({"isbn":isbn,"available":data1,"library":data2})
