@@ -10,7 +10,8 @@
   }
   $json->available = intval(str_replace(array("\n","\r","\t"," "),"",$json->available));
   $json->library = intval(str_replace(array("\n","\r","\t"," "),"",$json->library));
-  echo "There are ".$json->available." of ".$json->library." copies available. <a href='".$_GET["isbn"]."' target=_blank>Continue to Overdrive</a> for more information"
   
+  echo "There are ".$json->available." of ".$json->library." copies available. <a href='".$_GET["isbn"]."' target=_blank>Continue to Overdrive</a> for more information";
+  //echo "HOLDS".$json->holds;
 ?>
 
