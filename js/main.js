@@ -4,16 +4,22 @@
 
 
 function getStatus(isbn){
-	$.getJSON("http://labs.lapcat.org/overdrive/proxy.php",{"isbn":isbn},function(data){
-		$("body").append(JSON.stringify(data))
-	})
+  
+  $("div.briefcitActions a:first-child")
+    .each(function(i,item){
+      me = $(item);
+      me.before(
+        $("<iframe/>",{"src":"http://labs.lapcat.org/overdrive/proxy.php?isbn="+item.href})
+          .css({"height":"3.5em","width":"100%","border":"none","scrolling":"none","background":"transparent"})
+      )
+      me.remove();
+  })
+  
+  
+	
 }
 
 
 $(document).ready(function() {
-
-	//getStatus("9781781102534");
-
-   //getStatus("http://incolsa.lib.overdrive.com/ContentDetails.htm?ID=A747D620-96F9-42BC-B4E1-4830EC9D3C9E");
    getStatus();
 });

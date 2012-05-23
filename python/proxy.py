@@ -2,12 +2,16 @@ import cgi
 from twill.commands import *
 from BeautifulSoup import BeautifulSoup
 import simplejson as json
+import sys
+
 data1 = "No results found"
 data2 = "No results found"
 agent('Mozilla/5.0 (X11; Linux i686; rv:11.0) Gecko/20100101 Firefox/11.0')
-isbn = 'http://incolsa.lib.overdrive.com/ContentDetails.htm?ID=A747D620-96F9-42BC-B4E1-4830EC9D3C9E'
-isbn = "9781781102534"
+#isbn = 'http://incolsa.lib.overdrive.com/ContentDetails.htm?ID=A747D620-96F9-42BC-B4E1-4830EC9D3C9E'
+#isbn = "9781781102534"
 b = get_browser()
+isbn = sys.argv[1]
+
 if not isbn:
 	isbn = ""
 else:
