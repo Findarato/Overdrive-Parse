@@ -39,9 +39,10 @@ else:
 			data1 = data1.findNext('noscript')
 			holds = data1.findPreviousSiblings()			
 			holds = holds[0].renderContents()
-
-			holds = re.search('m#szNumWaiting\s*=\s*"(\d+)"#',holds)
-			print holds
+			
+			matches = re.search('m#szNumWaiting\s*=\s*"(\d+)"#',holds)
+				
+			#print matches(1)
 			data1 = data1.contents[0]
 			data1 = data1.replace(' ','')
 
